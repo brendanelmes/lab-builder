@@ -1,4 +1,7 @@
 steps:
 - name: node
   entrypoint: npm
-  args: ['ci', 'build']
+  args: ['ci']
+- name: node
+  entrypoint: npm
+  args: ['build']
