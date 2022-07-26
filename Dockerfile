@@ -1,3 +1,3 @@
-FROM alpine
-COPY helloworld.sh /
-CMD ["/helloworld.sh"]
+FROM node
+COPY dist /
+CMD ng serve --host 0.0.0.0 --port 4200
