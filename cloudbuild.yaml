@@ -11,5 +11,5 @@ steps:
   args: ['push', 'europe-west2-docker.pkg.dev/$PROJECT_ID/lab-docker-repo/$REPO_NAME:$COMMIT_SHA']
 - name: gcr.io/google.com/cloudsdktool/cloud-sdk
   entrypoint: gcloud
-  args: ['run', deploy', '$REPO_NAME', '--image', 'europe-west2-docker.pkg.dev/$PROJECT_ID/lab-docker-repo/$REPO_NAME']
+  args: ['run', 'deploy', '$REPO_NAME', '--image', 'europe-west2-docker.pkg.dev/$PROJECT_ID/lab-docker-repo/$REPO_NAME']
 images: ['europe-west2-docker.pkg.dev/$PROJECT_ID/lab-docker-repo/$REPO_NAME:$COMMIT_SHA']
