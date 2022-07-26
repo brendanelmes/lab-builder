@@ -7,3 +7,4 @@ steps:
   args: ['run', 'build']
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'europe-west2-docker.pkg.dev/${PROJECT_ID}/lab-docker-repo', '.']
+images: ['europe-west2-docker.pkg.dev/${PROJECT_ID}/lab-docker-repo']
