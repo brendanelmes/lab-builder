@@ -6,10 +6,12 @@ steps:
   entrypoint: npm
   args: ['run', 'build']
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'europe-west2-docker.pkg.dev/$PROJECT_ID/lab-docker-repo/$REPO_NAME:$COMMIT_SHA', '.']
+  args: ['build', '-t', 'europe-west2-docker.pkg.dev/$PROJECT_ID/lab-docker-repo/$SERVICE_NAME:$COMMIT_SHA', '.']
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'europe-west2-docker.pkg.dev/$PROJECT_ID/lab-docker-repo/$REPO_NAME:$COMMIT_SHA']
+  args: ['push', 'europe-west2-docker.pkg.dev/$PROJECT_ID/lab-docker-repo/$SERVICE_NAME:$COMMIT_SHA']
 - name: gcr.io/google.com/cloudsdktool/cloud-sdk
   entrypoint: gcloud
-  args: ['run', 'deploy', '$REPO_NAME', '--image', 'europe-west2-docker.pkg.dev/$PROJECT_ID/lab-docker-repo/$REPO_NAME']
-images: ['europe-west2-docker.pkg.dev/$PROJECT_ID/lab-docker-repo/$REPO_NAME:$COMMIT_SHA']
+  args: ['run', 'deploy', '$SERVICE_NAME', '--image', 'europe-west2-docker.pkg.dev/$PROJECT_ID/lab-docker-repo/$SERVICE_NAME']
+images: ['europe-west2-docker.pkg.dev/$PROJECT_ID/lab-docker-repo/$SERVICE_NAME:$COMMIT_SHA']
+substitutions: 
+  SERVICE_NAME: lab-builder
