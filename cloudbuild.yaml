@@ -15,4 +15,4 @@ steps:
 images: ['$_IMAGE_NAME:$COMMIT_SHA']
 substitutions: 
   _SERVICE_NAME: 'lab-builder'
-  _IMAGE_NAME: 'europe-west2-docker.pkg.dev/$PROJECT_ID/lab-docker-repo/$_SERVICE_NAME'
+  _IMAGE_NAME: 'europe-west2-docker.pkg.dev/${PROJECT_ID}/lab-docker-repo/${_SERVICE_NAME}'
