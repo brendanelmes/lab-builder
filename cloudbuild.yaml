@@ -11,7 +11,7 @@ steps:
   args: ['push', '$_IMAGE_NAME:$COMMIT_SHA']
 - name: gcr.io/google.com/cloudsdktool/cloud-sdk
   entrypoint: gcloud
-  args: ['run', 'deploy', '$_SERVICE_NAME', '--image', '$_IMAGE_NAME', '--region', 'europe-north']
+  args: ['run', 'deploy', '$_SERVICE_NAME', '--image', '$_IMAGE_NAME', '--region', 'europe-north1']
 images: ['$_IMAGE_NAME:$COMMIT_SHA']
 substitutions: 
   _SERVICE_NAME: 'lab-builder'
