@@ -14,5 +14,5 @@ steps:
   args: ['run', 'deploy', '$_SERVICE_NAME', '--image', '$_IMAGE_NAME']
 images: ['$_IMAGE_NAME:$COMMIT_SHA']
 substitutions: 
-  _SERVICE_NAME: lab-builder
-  _IMAGE_NAME: europe-west2-docker.pkg.dev/$PROJECT_ID/lab-docker-repo/$_SERVICE_NAME
+  _SERVICE_NAME: 'lab-builder'
+  _IMAGE_NAME: 'europe-west2-docker.pkg.dev/$PROJECT_ID/lab-docker-repo/$_SERVICE_NAME'
