@@ -1,3 +1,4 @@
-FROM node
-COPY . /
-CMD node_modules/.bin/ng serve --host 0.0.0.0 --port 4200
+FROM nginx
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY ./dist/lab-builder /usr/share/nginx/html
+ENTRYPOINT [ "nginx", "-g", "daemon off;" ]
