@@ -5,18 +5,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderModule } from './header/header.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CreateLabModule } from './pages/create-lab/create-lab.module';
+import { LandingPageModule } from './pages/landing-page/landing-page.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HeaderModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    CreateLabModule,
+    LandingPageModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

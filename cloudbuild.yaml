@@ -1,18 +1,30 @@
 steps:
-- name: node
-  entrypoint: npm
-  args: ['ci']
-- name: node
-  entrypoint: npm
-  args: ['run', 'build']
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', '$_IMAGE_NAME:$COMMIT_SHA', '.']
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', '$_IMAGE_NAME:$COMMIT_SHA']
-- name: gcr.io/google.com/cloudsdktool/cloud-sdk
-  entrypoint: gcloud
-  args: ['run', 'deploy', '$_SERVICE_NAME', '--image', '$_IMAGE_NAME:$COMMIT_SHA', '--region', 'europe-north1']
-images: ['$_IMAGE_NAME:$COMMIT_SHA']
-substitutions: 
-  _SERVICE_NAME: 'lab-builder'
-  _IMAGE_NAME: 'europe-west2-docker.pkg.dev/${PROJECT_ID}/lab-docker-repo/${_SERVICE_NAME}'
+  - name: node
+    entrypoint: npm
+    args: ["ci"]
+  - name: node
+    entrypoint: npm
+    args: ["run", "test"]
+  - name: node
+    entrypoint: npm
+    args: ["run", "build"]
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["build", "-t", "$_IMAGE_NAME:$COMMIT_SHA", "."]
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["push", "$_IMAGE_NAME:$COMMIT_SHA"]
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    entrypoint: gcloud
+    args:
+      [
+        "run",
+        "deploy",
+        "$_SERVICE_NAME",
+        "--image",
+        "$_IMAGE_NAME:$COMMIT_SHA",
+        "--region",
+        "europe-north1",
+      ]
+images: ["$_IMAGE_NAME:$COMMIT_SHA"]
+substitutions:
+  _SERVICE_NAME: "lab-builder"
+  _IMAGE_NAME: "europe-west2-docker.pkg.dev/${PROJECT_ID}/lab-docker-repo/${_SERVICE_NAME}"
